@@ -1,7 +1,12 @@
 {% extends 'base.html' %}
 
-{% block content %}
+{% block title %} {{ block.super }} || Restaurants {% endblock title %}
 
-    123123123 {{ hello }}<br>
+{% block content %}
+<h1>Restaurants:</h1>
+    {%for restaurant in restaurants %}
+        {{ restaurant.name }}<br>
+    {% endfor %}
+
 {{ block.super }}
 {% endblock content %}
