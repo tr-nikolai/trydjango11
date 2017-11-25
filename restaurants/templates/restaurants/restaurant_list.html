@@ -4,9 +4,9 @@
 
 {% block content %}
 <h1>Restaurants:</h1>
-    {%for restaurant in restaurants %}
-        {{ restaurant.name }}<br>
+    <ul>
+    {%for restaurant in object_list %}
+    <li>{{ restaurant.name }} {{ restaurant.locations }} {{ restaurant.category }} {{ restaurant.timestamp }}</li>
     {% endfor %}
-
-{{ block.super }}
+    </ul>    
 {% endblock content %}
