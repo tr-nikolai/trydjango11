@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %} {{ block.super }} || Detail {% endblock title %}
+
+{% block content %}
+<h1>Restaurants:</h1>
+    <ul>
+    <li>{{ object.name }}</li>
+    <li>{{ object.location }}</li>
+    <li>{{ object.category }}</li>
+    <li>{{ object.timestamp }}</li>
+
+
+    </ul>
+{% endblock content %}

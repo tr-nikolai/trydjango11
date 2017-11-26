@@ -6,7 +6,8 @@
 <h1>Restaurants:</h1>
     <ul>
     {%for restaurant in object_list %}
-    <li>{{ restaurant.name }} {{ restaurant.locations }} {{ restaurant.category }} {{ restaurant.timestamp }}</li>
+    <li><a href="/rest/{{ restaurant.slug }}">{{ restaurant.name }}</a></li>
+    <li>{{ restaurant.name }} {{ restaurant.location }} {{ restaurant.category }} {{ restaurant.timestamp }}</li>
     {% endfor %}
     </ul>    
 {% endblock content %}

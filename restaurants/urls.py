@@ -1,6 +1,12 @@
 from django.conf.urls import url
-from . import views
+from .views import (restaurant_listview,
+                    RestauratListView,
+                    RestauratDetailView,
+                    restaurant_createview)
 
 urlpatterns = [
-    url(r'^', views.restaurant_listview),
+    url(r'^$', RestauratListView.as_view()),
+    # url(r'^(?P<slug>\w+)/$', RestauratListView.as_view()),
+    url(r'^create/$',   restaurant_createview),
+    url(r'^(?P<slug>[\w-]+)/$', RestauratDetailView.as_view()),
 ]
