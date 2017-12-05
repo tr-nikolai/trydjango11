@@ -9,9 +9,13 @@
     <div class="container">
         <h1>TestPJ</h1>
         <h3>
-            <a href="/rest/">Home </a>
-            <a href="/rest/create">Create</a>
-            <a href="">Bebeb</a>
+            <a href="{% url 'rest:home' %}">Home </a>
+            <a href="{% url 'rest:create' %}">Create</a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'login' %}">Login</a>
+            {% else %}
+                <a href="">Logout</a>
+            {% endif %}
         </h3>
     </div>
     <div class="container">
