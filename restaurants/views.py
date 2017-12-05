@@ -1,11 +1,11 @@
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
-from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 
 from .models import Restaurant
-from .forms import RestaurantCreateForms, RestaurantCreateModelForm
+from .forms import RestaurantCreateModelForm
 
 
 @login_required(login_url='/login/')
@@ -53,3 +53,14 @@ class RestauratDetailView(DetailView):
     #     slug = self.kwargs.get('slug')
     #     obj = get_object_or_404(Restaurant, id=slug)
     #     return obj
+
+
+class RestaurantCreateView(CreateView):
+    form_class = RestaurantCreateModelForm
+    template_name = 'restaurants/form.html'
+    success_url = '/rest/'
+
+    def form_valid(self, form):
+        instance = form.save(commit=False)
+        instance.owner = self.request.user
+        return super(RestaurantCreateView, self).form_valid(form)
