@@ -11,11 +11,10 @@ class Restaurant(models.Model):
     owner = models.ForeignKey(User)
     name = models.CharField(max_length=120)
     location = models.CharField(max_length=120, blank=True, null=True)
-    category = models.CharField(max_length=120, blank=True, null =True)
+    category = models.CharField(max_length=120, blank=True, null=True)
     timestamp = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    slug = models.SlugField(blank=True, null =True)
-
+    slug = models.SlugField(blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -25,7 +24,8 @@ class Restaurant(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('rest:detail', kwargs={'slug':self.slug})
+        return reverse('rest:detail', kwargs={'slug': self.slug})
+
 
 def rl_pre_save_generator(sender, instance, *args, **kwargs):
     if not instance.slug:

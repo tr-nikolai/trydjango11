@@ -2,3 +2,4 @@
 db.*
 *.pyc
 restaurants/migrations
+menus/migrations
