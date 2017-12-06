@@ -6,8 +6,10 @@
 <h1>Restaurants:</h1>
     <ul>
     {%for restaurant in object_list %}
-        <li><a href="/rest/{{ restaurant.slug }}">{{ restaurant.name }}</a></li>
-        <li>{{ restaurant.name }} {{ restaurant.location }} {{ restaurant.category }} {{ restaurant.timestamp }}</li>
+        <h3><li><a href="{{ restaurant.get_absolute_url }}">{{ restaurant.name }}</a></li></h3>
+        <li>{{ restaurant.location }}</li>
+        <li>{{ restaurant.category }}</li>
+        <li>{{ restaurant.timestamp }}</li>
         <hr>
     {% endfor %}
     </ul>    
